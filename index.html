@@ -174,19 +174,13 @@
 
       <div id="bottomBar" class="bottom-bar">
         <div class="p-2 h-100 overflow-auto">
-          <h6>Cortes disponibles</h6>
+          <h4 id="tituloTema">Temas disponibles</h4>
           <div class="d-flex flex-wrap gap-2 justify-content-center">
-            <img src="./img/1725.png" class="gallery-img" alt="No se encontro la imagen"/>
-            <img src="./img/1817.png" class="gallery-img" alt="No se encontro la imagen"/>
-            <img src="./img/1854.png" class="gallery-img" alt="No se encontro la imagen"/>
-            <img src="./img/1894.png" class="gallery-img" alt="No se encontro la imagen"/>
-            <img src="./img/1947.png" class="gallery-img" alt="No se encontro la imagen"/>
-            <img src="./img/1964.png" class="gallery-img" alt="No se encontro la imagen"/>
-            <img src="./img/1982.png" class="gallery-img" alt="No se encontro la imagen"/>
-            <img src="./img/1993.png" class="gallery-img" alt="No se encontro la imagen"/>            
-            <img src="./img/2000.png" class="gallery-img" alt="No se encontro la imagen"/>
-            <img src="./img/2010.png" class="gallery-img" alt="No se encontro la imagen"/>
-            <img src="./img/2017.png" class="gallery-img" alt="No se encontro la imagen"/>            
+            <img src="./img/1725.png" class="gallery-img" alt="No se encontro la imagen" onclick="cargaCapas(1)" onmouseout="regresaTitulo()" onmouseover="cambiaTituloTema(1)"/>
+            <img src="./img/1817.png" class="gallery-img" alt="No se encontro la imagen" onclick="cargaCapas(2)" onmouseout="regresaTitulo()" onmouseover="cambiaTituloTema(2)"/>
+            <img src="./img/1854.png" class="gallery-img" alt="No se encontro la imagen" onclick="cargaCapas(3)" onmouseout="regresaTitulo()" onmouseover="cambiaTituloTema(3)"/>
+            <img src="./img/1894.png" class="gallery-img" alt="No se encontro la imagen" onclick="cargaCapas(4)" onmouseout="regresaTitulo()" onmouseover="cambiaTituloTema(4)" />
+            <img src="./img/1982.png" class="gallery-img" alt="No se encontro la imagen" onclick="cargaCapas(5)" onmouseout="regresaTitulo()" onmouseover="cambiaTituloTema(5)" />                       
           </div>
         </div>
 
@@ -195,8 +189,8 @@
 
   // Inicializar el mapa SIN el control de zoom
     const map = L.map('map', {
-    center: [19.2866, -99.6557],
-    zoom: 6,
+    center: [23.0, -99.1332],
+    zoom: 5,
     zoomControl: false // Desactiva el control por defecto (que va arriba a la izquierda)
     });
 
@@ -205,8 +199,9 @@
  
 
     const osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap'
+      attribution: '(c) Universidad Autónoma Chapingo'
     }).addTo(map);
+
 
     const esri = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
       attribution: 'Tiles &copy; Esri'
@@ -214,8 +209,6 @@
 
     L.control.layers({ 'OpenStreetMap': osm, 'Satélite Esri': esri }).addTo(map);
 
-    L.marker([19.2866, -99.6557]).addTo(map)
-      .bindPopup('¡Hola desde Toluca!').openPopup();
 
     // Toggle sidebar
     const toggleBtn = document.getElementById('toggleSidebar');
@@ -258,8 +251,49 @@ toggleBtn2.addEventListener('click', () => {
 llenaCBXentidades();
 
 
+function cargaCapas(temaID){
 
+const url="http://localhost:8080/geoserver/wms";
 
+var wmsLayer = L.tileLayer.wms(url, {
+    layers: "IDEdavid:forestal_siacc",
+    format: "image/png",
+    transparent: true,
+    versión: "1.1.0",
+    attribution: "UACH"
+
+}).addTo(map);
+
+console.log("Tema cargado");
+
+}
+
+function regresaTitulo(){
+  document.getElementById("tituloTema").innerHTML=`<h4>Para cargar capas da click sobre alguna imagen</h4>`
+}
+
+function cambiaTituloTema(temaID){
+  switch (temaID) {
+    case 1:
+      nomTema="Vulnerabilidad climática";
+      break;
+    case 2:
+      nomTema="Seguridad alimentaria";
+      break;
+    case 3:
+      nomTema="Suelos conservados";
+      break;
+    case 4:
+      nomTema="Bosques resilientes";
+      break;
+    case 5:
+      nomTema="Agricultura adaptada";      
+      break;
+    default:
+      break;
+  }
+document.getElementById("tituloTema").innerHTML=`<h4>${nomTema}</h4>`
+}
 
 
 async function llenaCBXentidades() {
