@@ -115,6 +115,22 @@
       max-width: calc(33% - 10px); /* 3 imágenes por fila aprox. */
     }
 
+    /*css para rectangulos en simbologia*/
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      border: 1px solid #000;
+      border-radius: 2px;
+    }
+
+    /* Estilo de la leyenda */
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      border: 1px solid #333;
+      border-radius: 3px;
+    }
+
 
   </style>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -133,25 +149,75 @@
   <div id="sidebar" class="sidebar">
     <h5>Panel</h5>
     <ul class="nav nav-tabs" id="sidebarTabs" role="tablist">
-      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab1">Buscar</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab2">Marcadores</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab3">Info</button></li>
+      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab1">Principal</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab2">Base</button></li>
+      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab3">Buscar</button></li>
     </ul>
     <div class="tab-content mt-3">
       <div class="tab-pane fade show active" id="tab1">
+
+
+
+
+
+
+<div class="legend-item mb-2">
+  <div class="d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center">
+      <input type="checkbox" class="form-check-input me-2" checked onchange="toggleLayer('base')">      
+      <span class="ms-2">Carbono orgánico del suelo (2001–2016)</span>
+    </div>
+    <button class="btn btn-sm btn-link text-decoration-none" onclick="toggleSubleyenda(this)">▼</button>
+  </div>
+
+  <div class="sub-leyenda mt-2 ms-4" style="display: none;">
+    <div class="d-flex align-items-center mb-1">
+      <div class="legend-color" style="background-color: #E81014;"></div>
+      <span class="ms-2">Menor a 50 t/ha</span>
+    </div>
+    <div class="d-flex align-items-center mb-1">
+      <div class="legend-color" style="background-color: #FA8D34;"></div>
+      <span class="ms-2">50 a 75 t/ha</span>
+    </div>
+    <div class="d-flex align-items-center mb-1">
+      <div class="legend-color" style="background-color: #FAFA64;"></div>
+      <span class="ms-2">75 a 100 t/ha</span>
+    </div>
+    <div class="d-flex align-items-center mb-1">
+      <div class="legend-color" style="background-color: #74C476;"></div>
+      <span class="ms-2">100 a 150 t/ha</span>
+    </div>
+    <div class="d-flex align-items-center mb-1">
+      <div class="legend-color" style="background-color: #238B45;"></div>
+      <span class="ms-2">Mayor a 150 t/ha</span>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+      <div class="tab-pane fade" id="tab2">
+        <p>Capas base.</p>
+        <div class="legend-item d-flex align-items-center mb-2">
+          <input type="checkbox" class="form-check-input me-2" checked onchange="toggleLayer('entidades')">
+          <div class="legend-color" style="background-color: #69685f;"></div>
+          <span class="ms-2">Entidades</span>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="tab3">
         <h6>Elije la entidad</h6>
         <div id="entidadesDIV"></div>
 
         <div id="municipiosDIV"></div>
 
         <div id="botonReestablecer"></div>
-
-      </div>
-      <div class="tab-pane fade" id="tab2">
-        <p>Lista de cualquier cosa.</p>
-      </div>
-      <div class="tab-pane fade" id="tab3">
-        <p>Informacion de otra cosa</p>
       </div>
     </div>
   </div>
@@ -185,6 +251,7 @@
         </div>
 
   <!-- Scripts -->
+   <script src="config.js"></script>
   <script>
 
   // Inicializar el mapa SIN el control de zoom
@@ -251,11 +318,128 @@ toggleBtn2.addEventListener('click', () => {
 llenaCBXentidades();
 
 
+const estilosPorTipo = {
+  comercial: { color: '#FFA500', fillColor: '#FFD580' }, // naranja
+  habitacional: { color: '#228B22', fillColor: '#90EE90' }, // verde
+  industrial:{ color: '#555', fillColor: '#999' }        // gris
+};
+
+const tiposRegistrados = {};// tal vez esta variable no se necesite, ya que los tipos de entidades se cargan al inicio
+// Declaramos un objeto para almacenar las capas
+const capas = {};
+
+loadEntidadesPolygons(); // Carga las entidades al inicio
+
+//inicia zona de funciones++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+function toggleSubleyenda(btn) {
+  const sub = btn.closest('.legend-item').querySelector('.sub-leyenda');
+  const visible = sub.style.display === 'block';
+  sub.style.display = visible ? 'none' : 'block';
+  btn.textContent = visible ? '▼' : '▲';
+}
+
+
+async function loadEntidadesPolygons(cve_agee){
+  const url = `http://localhost:4000/spatyal/getEntidadesPolygons`;
+  //console.log(url);
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+      console.log("Error");
+    }else{
+      let entidadesArr = await response.json();
+      entidadesGeoJSON=entidadesArr[0].geojson;
+      //console.log(riosArr[0].geojson);      
+
+      const entidadesLayer =L.geoJSON(entidadesGeoJSON, {
+        style: {
+          color: 'gray',         // Borde
+          fillColor: 'lightgray',  // Relleno
+          fillOpacity: 0.1,
+          weight: 2
+        }
+      }).addTo(map);
+
+      capas["entidades"] = entidadesLayer;
+
+    }
+  } catch (error) {
+    console.error(error.message);
+  }  
+
+}
+
+
+
+/*
+async function loadEntidadesPolygons(){ //tal vez esta funcion no se necesite, ya que las entidades se cargan al inicio
+  fetch('http://localhost:4000/spatyal/getEntidadesPolygons')
+    .then(res => res.json())
+    .then(dataArr => {    
+      dataGeoJSON=dataArr[0].geojson;
+      //console.log(dataGeoJSON);
+      const capaGeojson = L.geoJSON(dataGeoJSON, {
+        style: feature => {
+          const nomgeo = feature.properties.nomgeo;
+          //console.log(nomgeo);
+          const estilo = estilosPorTipo[nomgeo] || { color: 'gray', fillColor: 'lightgray' }; // Si el campo no contiene ningun valor que corresponda con la variable estilosPorTipo entonces entra
+
+          
+          if (!tiposRegistrados[nomgeo]) {
+            agregarALeyenda(nomgeo, estilo.fillColor, feature.properties.nombre || nomgeo);
+            tiposRegistrados[nomgeo] = true;
+          }
+
+          return {
+            color: estilo.color,
+            fillColor: estilo.fillColor,
+            fillOpacity: 0.01
+          };
+        },
+        onEachFeature: (feature, layer) => {
+          const texto = feature.properties.nomgeo || feature.properties.cve_agee;
+          layer.bindTooltip(texto, { sticky: true });
+        }
+      }).addTo(map);
+      capas["entidades"] = capaGeojson;
+    });
+}*/
+
+
+  function toggleLayer(id_layer) {
+    const layer = capas[id_layer];
+    if (layer && !map.hasLayer(layer)) {
+      map.addLayer(layer);
+    }else if (layer && map.hasLayer(layer)) {
+      map.removeLayer(layer);
+    }
+}
+
+
+
+  function agregarALeyenda(tipo, colorHex, etiqueta) {
+    const leyenda = document.getElementById('CapasBaseDIV');
+
+    const item = document.createElement('div');
+    item.className = 'legend-item d-flex align-items-center mb-2';
+
+    item.innerHTML = `
+      <div class="legend-color" style="background-color: ${colorHex};"></div>
+      <span class="ms-2">${etiqueta}</span>
+    `;
+
+    leyenda.appendChild(item);
+}
+
+
 function cargaCapas(temaID){
 
-const url="http://localhost:8080/geoserver/wms";
+const url=`http://${host}:${javaPort}/geoserver/wms`;
 
-var wmsLayer = L.tileLayer.wms(url, {
+
+
+var baseLayer = L.tileLayer.wms(url, {
     layers: "IDEdavid:forestal_siacc",
     format: "image/png",
     transparent: true,
@@ -264,7 +448,8 @@ var wmsLayer = L.tileLayer.wms(url, {
 
 }).addTo(map);
 
-console.log("Tema cargado");
+capas["base"] = baseLayer;
+//console.log("Tema cargado");
 
 }
 
