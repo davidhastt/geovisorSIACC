@@ -147,80 +147,46 @@
 
   <!-- Sidebar superpuesta -->
   <div id="sidebar" class="sidebar">
-    <h5>Panel</h5>
-    <ul class="nav nav-tabs" id="sidebarTabs" role="tablist">
-      <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab1">Principal</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab2">Base</button></li>
-      <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab3">Buscar</button></li>
-    </ul>
-    <div class="tab-content mt-3">
-      <div class="tab-pane fade show active" id="tab1">
+      <h5>Panel</h5>
+      <ul class="nav nav-tabs" id="sidebarTabs" role="tablist"><!--Nombres de paneles-->
+        <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab1">Principal</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab2">Base</button></li>
+        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab3">Buscar</button></li>
+      </ul>
+      <div class="tab-content mt-3">
+        <div class="tab-pane fade show active" id="tab1">
+
+
+          <div id="mainLayers">
+            <h1>Bienvenido</h1>
+            <p>La Universidad Autonoma Chapingo a creado este geovisualizador</p>
+          <button type="submit" class="btn btn-primary">Ver temas</button>
+
+          </div>
 
 
 
 
+          </div>
+          <div class="tab-pane fade" id="tab2">
+            <p>Capas base.</p>
+            <div class="legend-item d-flex align-items-center mb-2">
+              <input type="checkbox" class="form-check-input me-2" checked onchange="toggleLayer('entidades')">
+              <div class="legend-color" style="background-color: #69685f;"></div>
+              <span class="ms-2">Entidades</span>
+            </div>
+          </div>
 
+          <div class="tab-pane fade" id="tab3">
+            <h6>Elije la entidad</h6>
+            <div id="entidadesDIV"></div>
 
-<div class="legend-item mb-2">
-  <div class="d-flex align-items-center justify-content-between">
-    <div class="d-flex align-items-center">
-      <input type="checkbox" class="form-check-input me-2" checked onchange="toggleLayer('base')">      
-      <span class="ms-2">Carbono orgánico del suelo (2001–2016)</span>
-    </div>
-    <button class="btn btn-sm btn-link text-decoration-none" onclick="toggleSubleyenda(this)">▼</button>
-  </div>
+            <div id="municipiosDIV"></div>
 
-  <div class="sub-leyenda mt-2 ms-4" style="display: none;">
-    <div class="d-flex align-items-center mb-1">
-      <div class="legend-color" style="background-color: #E81014;"></div>
-      <span class="ms-2">Menor a 50 t/ha</span>
-    </div>
-    <div class="d-flex align-items-center mb-1">
-      <div class="legend-color" style="background-color: #FA8D34;"></div>
-      <span class="ms-2">50 a 75 t/ha</span>
-    </div>
-    <div class="d-flex align-items-center mb-1">
-      <div class="legend-color" style="background-color: #FAFA64;"></div>
-      <span class="ms-2">75 a 100 t/ha</span>
-    </div>
-    <div class="d-flex align-items-center mb-1">
-      <div class="legend-color" style="background-color: #74C476;"></div>
-      <span class="ms-2">100 a 150 t/ha</span>
-    </div>
-    <div class="d-flex align-items-center mb-1">
-      <div class="legend-color" style="background-color: #238B45;"></div>
-      <span class="ms-2">Mayor a 150 t/ha</span>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-      </div>
-      <div class="tab-pane fade" id="tab2">
-        <p>Capas base.</p>
-        <div class="legend-item d-flex align-items-center mb-2">
-          <input type="checkbox" class="form-check-input me-2" checked onchange="toggleLayer('entidades')">
-          <div class="legend-color" style="background-color: #69685f;"></div>
-          <span class="ms-2">Entidades</span>
+            <div id="botonReestablecer"></div>
+          </div>
         </div>
       </div>
-
-      <div class="tab-pane fade" id="tab3">
-        <h6>Elije la entidad</h6>
-        <div id="entidadesDIV"></div>
-
-        <div id="municipiosDIV"></div>
-
-        <div id="botonReestablecer"></div>
-      </div>
-    </div>
-  </div>
 
   <!-- Mapa -->
   <div id="map"></div>
@@ -242,11 +208,11 @@
         <div class="p-2 h-100 overflow-auto">
           <h4 id="tituloTema">Temas disponibles</h4>
           <div class="d-flex flex-wrap gap-2 justify-content-center">
-            <img src="./img/1725.png" class="gallery-img" alt="No se encontro la imagen" onclick="cargaCapas(1)" onmouseout="regresaTitulo()" onmouseover="cambiaTituloTema(1)"/>
-            <img src="./img/1817.png" class="gallery-img" alt="No se encontro la imagen" onclick="cargaCapas(2)" onmouseout="regresaTitulo()" onmouseover="cambiaTituloTema(2)"/>
-            <img src="./img/1854.png" class="gallery-img" alt="No se encontro la imagen" onclick="cargaCapas(3)" onmouseout="regresaTitulo()" onmouseover="cambiaTituloTema(3)"/>
-            <img src="./img/1894.png" class="gallery-img" alt="No se encontro la imagen" onclick="cargaCapas(4)" onmouseout="regresaTitulo()" onmouseover="cambiaTituloTema(4)" />
-            <img src="./img/1982.png" class="gallery-img" alt="No se encontro la imagen" onclick="cargaCapas(5)" onmouseout="regresaTitulo()" onmouseover="cambiaTituloTema(5)" />                       
+            <img src="./img/1725.png" class="gallery-img" alt="No se encontro la imagen" onclick="cargaCapas('Vulnerabilidad climatica')" onmouseout="regresaTitulo()" onmouseover="cambiaTituloTema(1)"/>
+            <img src="./img/1817.png" class="gallery-img" alt="No se encontro la imagen" onclick="cargaCapas('Seguridad alimentaria')" onmouseout="regresaTitulo()" onmouseover="cambiaTituloTema(2)"/>
+            <img src="./img/1854.png" class="gallery-img" alt="No se encontro la imagen" onclick="cargaCapas('Suelos conservados')" onmouseout="regresaTitulo()" onmouseover="cambiaTituloTema(3)"/>
+            <img src="./img/1894.png" class="gallery-img" alt="No se encontro la imagen" onclick="cargaCapas('Bosques resilientes')" onmouseout="regresaTitulo()" onmouseover="cambiaTituloTema(4)" />
+            <img src="./img/1982.png" class="gallery-img" alt="No se encontro la imagen" onclick="cargaCapas('Agricultura adaptada')" onmouseout="regresaTitulo()" onmouseover="cambiaTituloTema(5)" />                       
           </div>
         </div>
 
@@ -318,7 +284,7 @@ toggleBtn2.addEventListener('click', () => {
 llenaCBXentidades();
 
 
-const estilosPorTipo = {
+const estilosPorTipo = { // tal vez esta variable no se necesite, ya que los tipos de entidades se cargan al inicio
   comercial: { color: '#FFA500', fillColor: '#FFD580' }, // naranja
   habitacional: { color: '#228B22', fillColor: '#90EE90' }, // verde
   industrial:{ color: '#555', fillColor: '#999' }        // gris
@@ -372,41 +338,6 @@ async function loadEntidadesPolygons(cve_agee){
 
 
 
-/*
-async function loadEntidadesPolygons(){ //tal vez esta funcion no se necesite, ya que las entidades se cargan al inicio
-  fetch('http://localhost:4000/spatyal/getEntidadesPolygons')
-    .then(res => res.json())
-    .then(dataArr => {    
-      dataGeoJSON=dataArr[0].geojson;
-      //console.log(dataGeoJSON);
-      const capaGeojson = L.geoJSON(dataGeoJSON, {
-        style: feature => {
-          const nomgeo = feature.properties.nomgeo;
-          //console.log(nomgeo);
-          const estilo = estilosPorTipo[nomgeo] || { color: 'gray', fillColor: 'lightgray' }; // Si el campo no contiene ningun valor que corresponda con la variable estilosPorTipo entonces entra
-
-          
-          if (!tiposRegistrados[nomgeo]) {
-            agregarALeyenda(nomgeo, estilo.fillColor, feature.properties.nombre || nomgeo);
-            tiposRegistrados[nomgeo] = true;
-          }
-
-          return {
-            color: estilo.color,
-            fillColor: estilo.fillColor,
-            fillOpacity: 0.01
-          };
-        },
-        onEachFeature: (feature, layer) => {
-          const texto = feature.properties.nomgeo || feature.properties.cve_agee;
-          layer.bindTooltip(texto, { sticky: true });
-        }
-      }).addTo(map);
-      capas["entidades"] = capaGeojson;
-    });
-}*/
-
-
   function toggleLayer(id_layer) {
     const layer = capas[id_layer];
     if (layer && !map.hasLayer(layer)) {
@@ -418,38 +349,171 @@ async function loadEntidadesPolygons(){ //tal vez esta funcion no se necesite, y
 
 
 
-  function agregarALeyenda(tipo, colorHex, etiqueta) {
-    const leyenda = document.getElementById('CapasBaseDIV');
+function cargaCapas(nombreTema){
 
-    const item = document.createElement('div');
-    item.className = 'legend-item d-flex align-items-center mb-2';
+  //Leemos el archivo capas.json y carga la simbología
+  const url = `./capas.json`;   
+  fetch(url)
+    .then(response => response.json())
+    .then(data => { 
 
-    item.innerHTML = `
-      <div class="legend-color" style="background-color: ${colorHex};"></div>
-      <span class="ms-2">${etiqueta}</span>
-    `;
+      gruposArr = data[nombreTema]; // Obtenemos el tema específico
+      
+      cargaSimbologia(gruposArr); //creamos la simbología
+      cargarLayerWMS(gruposArr); //cargamos la capa WMS
 
-    leyenda.appendChild(item);
+    })
+    //.catch(error => console.error('Error al cargar la simbología:', error));
+
+}
+
+function cargarLayerWMS(gruposArr){
+
+  // Primero limpiamos las capas del mapa
+  map.eachLayer(function(layer) {
+    // Evita eliminar la capa base (como el mapa de fondo)
+    if (!(layer instanceof L.TileLayer)) {
+      map.removeLayer(layer);
+    }
+  });
+
+
+  gruposArr.forEach(grupo => {
+    grupo.capas.forEach(capa => {
+      const layer = L.tileLayer.wms(`http://${host}:${javaPort}/geoserver/wms`, {
+        layers: capa.layers,
+        format: "image/png",
+        transparent: true,
+        version: "1.1.0",
+        attribution: "UACH"
+      }).addTo(map);
+      capas[capa.fieldName] = layer; // Guardamos la capa en el objeto capas   
+    });
+  });
+
+
+
+
+
+/*
+  // Ahora cargamos las capas WMS
+  capasArr.forEach(capa => {    
+      const layer = L.tileLayer.wms(`http://${host}:${javaPort}/geoserver/wms`, {
+        layers: capa.layers,
+        format: "image/png",
+        transparent: true,
+        version: "1.1.0",
+        attribution: "UACH"
+      }).addTo(map);
+      capas[capa.fielName] = layer; // Guardamos la capa en el objeto capas    
+  });
+*/
 }
 
 
-function cargaCapas(temaID){
-
-const url=`http://${host}:${javaPort}/geoserver/wms`;
 
 
 
-var baseLayer = L.tileLayer.wms(url, {
-    layers: "IDEdavid:forestal.base",
-    format: "image/png",
-    transparent: true,
-    versión: "1.1.0",
-    attribution: "UACH"
+function cargaSimbologia(gruposArr){
+      document.getElementById('mainLayers').innerHTML = ''; // Limpiamos la leyenda antes de agregar nuevos elementos  ;
+      
+      simbologia="";
+      gruposArr.forEach(grupo => {        
+        simbologia+=`<h5>${grupo.nomGrupo}</h5>`;               
+        grupo.capas.forEach(capa => {
+            simbologia += `
+              <div class="legend-item mb-2">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="d-flex align-items-center">
+                    <input type="checkbox" class="form-check-input me-2" checked onchange="toggleLayer('${capa.fieldName}')">      
+                    <span class="ms-2">${capa.longName}</span>
+                  </div>
+                  <button class="btn btn-sm btn-link text-decoration-none" onclick="toggleSubleyenda(this)">▼</button>
+                </div>
 
-}).addTo(map);
-capas["base"] = baseLayer;
+                <div class="sub-leyenda mt-2 ms-4" style="display: none;">
 
+            `;
+
+            let categorias = capa.categorias;
+            categorias.forEach(categoria => {
+              simbologia += `
+                <div class="d-flex align-items-center mb-1">
+                  <div class="legend-color" style="background-color: ${categoria.color};"></div>
+                  <span class="ms-2">${categoria.nombre}</span>
+                </div>
+              `;
+            });
+
+            simbologia += `
+                </div>
+              </div>
+            `;
+            document.getElementById("mainLayers").innerHTML = simbologia;
+
+
+        });
+      });  
 }
+
+
+
+
+
+
+function cargaSimbologia2(nombreTema) {
+    
+  const url = `./capas.json`;   
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const leyenda = document.getElementById('mainLayers');
+      leyenda.innerHTML = ''; // Limpiamos la leyenda antes de agregar nuevos elementos      
+      capasArr=data.capas;
+      let simbologia = "";
+      capasArr.forEach(capa => {        
+              
+        simbologia += `
+          <div class="legend-item mb-2">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center">
+                <input type="checkbox" class="form-check-input me-2" onchange="toggleLayer('${capa.fielName}')">      
+                <span class="ms-2">${capa.longName}</span>
+              </div>
+              <button class="btn btn-sm btn-link text-decoration-none" onclick="toggleSubleyenda(this)">▼</button>
+            </div>
+
+            <div class="sub-leyenda mt-2 ms-4" style="display: none;">
+
+        `;
+
+        let categorias = capa.categorias;
+        categorias.forEach(categoria => {
+          simbologia += `
+            <div class="d-flex align-items-center mb-1">
+              <div class="legend-color" style="background-color: ${categoria.color};"></div>
+              <span class="ms-2">${categoria.nombre}</span>
+            </div>
+          `;
+        });
+
+        simbologia += `
+            </div>
+          </div>
+        `;
+        document.getElementById("mainLayers").innerHTML = simbologia;
+      });
+
+
+      
+
+
+    })
+    .catch(error => console.error('Error al cargar la simbología:', error));
+}
+
+
+
 
 function regresaTitulo(){
   document.getElementById("tituloTema").innerHTML=`<h4>Para cargar capas da click sobre alguna imagen</h4>`

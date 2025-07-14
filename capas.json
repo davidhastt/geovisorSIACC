@@ -1,0 +1,33 @@
+
+{
+    "Bosques resilientes":[
+        {
+            "nomGrupo": "Cambio de uso del suelo",
+            "capas":[
+                {
+                "fieldName": "forestal.intensidad",    
+                "longName": "Intensidad de cambio de uso del suelo (2001-2018)",
+                "layers": "IDEdavid:forestal.intensidad",
+                "categorias": [
+                    {
+                        "nombre": "Alto",
+                        "color": "#A80000"
+                    },
+                    {
+                        "nombre": "Medio",
+                        "color": "#E69800"
+                    },
+                    {
+                        "nombre": "Bajo",
+                        "color": "#004DA8"
+                    },
+                    {
+                        "nombre": "No significativo",
+                        "color": "#E1E1E1"
+                    }
+                ]
+                }
+            ]            
+        }
+    ]
+}
