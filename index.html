@@ -147,7 +147,7 @@
 
   <!-- Sidebar superpuesta -->
   <div id="sidebar" class="sidebar">
-      <h5>Panel</h5>
+      <h5>Simbología</h5>
       <ul class="nav nav-tabs" id="sidebarTabs" role="tablist"><!--Nombres de paneles-->
         <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab1">Principal</button></li>
         <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab2">Base</button></li>
@@ -158,14 +158,16 @@
 
 
           <div id="mainLayers">
-            <h1>Bienvenido</h1>
+            <img src="https://siacc.chapingo.mx/wp-content/uploads/2023/02/ch1.png" class="img-fluid" alt="No se encontro la imagen" />
+            <img src="https://siacc.chapingo.mx/wp-content/uploads/2024/08/100anos-rectoria-1.png" class="img-fluid" alt="No se encontro la imagen" />
+
+            <h3>Bienvenido</h3>
             <p>La Universidad Autonoma Chapingo a creado este geovisualizador</p>
+
+            
           <button type="submit" class="btn btn-primary">Ver temas</button>
 
           </div>
-
-
-
 
           </div>
           <div class="tab-pane fade" id="tab2">
@@ -284,14 +286,7 @@ toggleBtn2.addEventListener('click', () => {
 llenaCBXentidades();
 
 
-const estilosPorTipo = { // tal vez esta variable no se necesite, ya que los tipos de entidades se cargan al inicio
-  comercial: { color: '#FFA500', fillColor: '#FFD580' }, // naranja
-  habitacional: { color: '#228B22', fillColor: '#90EE90' }, // verde
-  industrial:{ color: '#555', fillColor: '#999' }        // gris
-};
 
-const tiposRegistrados = {};// tal vez esta variable no se necesite, ya que los tipos de entidades se cargan al inicio
-// Declaramos un objeto para almacenar las capas
 const capas = {};
 
 loadEntidadesPolygons(); // Carga las entidades al inicio
@@ -319,6 +314,7 @@ async function loadEntidadesPolygons(cve_agee){
       //console.log(riosArr[0].geojson);      
 
       const entidadesLayer =L.geoJSON(entidadesGeoJSON, {
+        name: "entidades",
         style: {
           color: 'gray',         // Borde
           fillColor: 'lightgray',  // Relleno
@@ -372,42 +368,27 @@ function cargarLayerWMS(gruposArr){
   // Primero limpiamos las capas del mapa
   map.eachLayer(function(layer) {
     // Evita eliminar la capa base (como el mapa de fondo)
-    if (!(layer instanceof L.TileLayer)) {
+    if (!layer instanceof L.TileLayer)  {
       map.removeLayer(layer);
     }
   });
-
-
+// Luego, recorremos los grupos y capas para agregar las capas WMS
   gruposArr.forEach(grupo => {
     grupo.capas.forEach(capa => {
       const layer = L.tileLayer.wms(`http://${host}:${javaPort}/geoserver/wms`, {
-        layers: capa.layers,
+        layers: capa.layerGS,
         format: "image/png",
         transparent: true,
         version: "1.1.0",
         attribution: "UACH"
-      }).addTo(map);
+      });  
+      //}).addTo(map);
       capas[capa.fieldName] = layer; // Guardamos la capa en el objeto capas   
     });
   });
 
 
 
-
-
-/*
-  // Ahora cargamos las capas WMS
-  capasArr.forEach(capa => {    
-      const layer = L.tileLayer.wms(`http://${host}:${javaPort}/geoserver/wms`, {
-        layers: capa.layers,
-        format: "image/png",
-        transparent: true,
-        version: "1.1.0",
-        attribution: "UACH"
-      }).addTo(map);
-      capas[capa.fielName] = layer; // Guardamos la capa en el objeto capas    
-  });
-*/
 }
 
 
@@ -425,7 +406,7 @@ function cargaSimbologia(gruposArr){
               <div class="legend-item mb-2">
                 <div class="d-flex align-items-center justify-content-between">
                   <div class="d-flex align-items-center">
-                    <input type="checkbox" class="form-check-input me-2" checked onchange="toggleLayer('${capa.fieldName}')">      
+                    <input type="checkbox" class="form-check-input me-2" onchange="toggleLayer('${capa.fieldName}')">      
                     <span class="ms-2">${capa.longName}</span>
                   </div>
                   <button class="btn btn-sm btn-link text-decoration-none" onclick="toggleSubleyenda(this)">▼</button>
@@ -457,60 +438,6 @@ function cargaSimbologia(gruposArr){
 }
 
 
-
-
-
-
-function cargaSimbologia2(nombreTema) {
-    
-  const url = `./capas.json`;   
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      const leyenda = document.getElementById('mainLayers');
-      leyenda.innerHTML = ''; // Limpiamos la leyenda antes de agregar nuevos elementos      
-      capasArr=data.capas;
-      let simbologia = "";
-      capasArr.forEach(capa => {        
-              
-        simbologia += `
-          <div class="legend-item mb-2">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center">
-                <input type="checkbox" class="form-check-input me-2" onchange="toggleLayer('${capa.fielName}')">      
-                <span class="ms-2">${capa.longName}</span>
-              </div>
-              <button class="btn btn-sm btn-link text-decoration-none" onclick="toggleSubleyenda(this)">▼</button>
-            </div>
-
-            <div class="sub-leyenda mt-2 ms-4" style="display: none;">
-
-        `;
-
-        let categorias = capa.categorias;
-        categorias.forEach(categoria => {
-          simbologia += `
-            <div class="d-flex align-items-center mb-1">
-              <div class="legend-color" style="background-color: ${categoria.color};"></div>
-              <span class="ms-2">${categoria.nombre}</span>
-            </div>
-          `;
-        });
-
-        simbologia += `
-            </div>
-          </div>
-        `;
-        document.getElementById("mainLayers").innerHTML = simbologia;
-      });
-
-
-      
-
-
-    })
-    .catch(error => console.error('Error al cargar la simbología:', error));
-}
 
 
 

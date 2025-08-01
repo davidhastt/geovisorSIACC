@@ -7,7 +7,7 @@
                 {
                 "fieldName": "forestal.intensidad",    
                 "longName": "Intensidad de cambio de uso del suelo (2001-2018)",
-                "layers": "IDEdavid:forestal.intensidad",
+                "layerGS": "IDEdavid:forestal.intensidad",
                 "categorias": [
                     {
                         "nombre": "Alto",
@@ -26,8 +26,220 @@
                         "color": "#E1E1E1"
                     }
                 ]
-                }
+                },
+                {
+                "fieldName": "forestal.numCambios",    
+                "longName": "Número de cambios de uso del suelo (2001-2018)",
+                "layerGS": "IDEdavid:forestal.numCambios",
+                "categorias": [
+                    {
+                        "nombre": "0",
+                        "color": "#878787"
+                    },
+                    {
+                        "nombre": "1",
+                        "color": "#fddbc7"
+                    },
+                    {
+                        "nombre": "2",
+                        "color": "#fc9272"
+                    },
+                    {
+                        "nombre": "3",
+                        "color": "#b35806"
+                    },
+                    {
+                        "nombre": "4",
+                        "color": "#b2182b"
+                    },
+                    {
+                        "nombre": "5",
+                        "color": "#800000"
+                    }                                        
+                ]
+                }                
+            ]            
+        },
+        {
+            "nomGrupo": "Carbono orgánico del suelo actual y futuro",
+            "capas":[
+                {
+                "fieldName": "forestal.base",    
+                "longName": "Carbono orgánico almacenado en suelo (2001-2016)",
+                "layerGS": "IDEdavid:forestal.base",
+                "categorias": [
+                    {
+                        "nombre": "Menor a 50 t/ha",
+                        "color": "#E81014"
+                    },
+                    {
+                        "nombre": "50 a 75 t/ha",
+                        "color": "#FA8D34"
+                    },
+                    {
+                        "nombre": "75 a 100 t/ha",
+                        "color": "#FAFA64"
+                    },
+                    {
+                        "nombre": "100 a 150 t/ha",
+                        "color": "#74C476"
+                    },
+                    {
+                        "nombre": "Mayor a 150 t/ha",
+                        "color": "#238B45"
+                    }                    
+                ]
+                },
+                {
+                "fieldName": "forestal.HadGEM",    
+                "longName": "Carbono orgánico almacenado en suelo (HadGEM3-GC31-LL SSP-585 2081-2100)",
+                "layerGS": "IDEdavid:forestal.hadgem",
+                "categorias": [
+                    {
+                        "nombre": "Menor a 50 t/ha",
+                        "color": "#E81014"
+                    },
+                    {
+                        "nombre": "50 a 75 t/ha",
+                        "color": "#FA8D34"
+                    },
+                    {
+                        "nombre": "75 a 100 t/ha",
+                        "color": "#FAFA64"
+                    },
+                    {
+                        "nombre": "100 a 150 t/ha",
+                        "color": "#74C476"
+                    },
+                    {
+                        "nombre": "Mayor a 150 t/ha",
+                        "color": "#238B45"
+                    }                    
+                ]
+                },
+                {
+                "fieldName": "forestal.Miroc",    
+                "longName": "Carbono orgánico almacenado en suelo (MIROC6 SSP-585 2081-2100)",
+                "layerGS": "IDEdavid:forestal.miroc",
+                "categorias": [
+                    {
+                        "nombre": "Menor a 50 t/ha",
+                        "color": "#E81014"
+                    },
+                    {
+                        "nombre": "50 a 75 t/ha",
+                        "color": "#FA8D34"
+                    },
+                    {
+                        "nombre": "75 a 100 t/ha",
+                        "color": "#FAFA64"
+                    },
+                    {
+                        "nombre": "100 a 150 t/ha",
+                        "color": "#74C476"
+                    },
+                    {
+                        "nombre": "Mayor a 150 t/ha",
+                        "color": "#238B45"
+                    }                    
+                ]
+                },
+                {
+                "fieldName": "forestal.MPI",    
+                "longName": "Carbono orgánico almacenado en suelo (MPI-ESM1-2-HR SSP-585 2081-2100)",
+                "layerGS": "IDEdavid:forestal.mpi",
+                "categorias": [
+                    {
+                        "nombre": "Menor a 50 t/ha",
+                        "color": "#E81014"
+                    },
+                    {
+                        "nombre": "50 a 75 t/ha",
+                        "color": "#FA8D34"
+                    },
+                    {
+                        "nombre": "75 a 100 t/ha",
+                        "color": "#FAFA64"
+                    },
+                    {
+                        "nombre": "100 a 150 t/ha",
+                        "color": "#74C476"
+                    },
+                    {
+                        "nombre": "Mayor a 150 t/ha",
+                        "color": "#238B45"
+                    }                    
+                ]
+                },
+                                {
+                "fieldName": "forestal.hadgem",    
+                "longName": "Dinamica del COS (HadGEM3-GC31-LL SSP-585 2081-2100)",
+                "layerGS": "IDEdavid:forestal.hadgem",
+                "categorias": [
+                    {
+                        "nombre": "Menor a 50 t/ha",
+                        "color": "#E81014"
+                    },
+                    {
+                        "nombre": "50 a 75 t/ha",
+                        "color": "#FA8D34"
+                    },
+                    {
+                        "nombre": "75 a 100 t/ha",
+                        "color": "#FAFA64"
+                    },
+                    {
+                        "nombre": "100 a 150 t/ha",
+                        "color": "#74C476"
+                    },
+                    {
+                        "nombre": "Mayor a 150 t/ha",
+                        "color": "#238B45"
+                    }                    
+                ]
+                },
+                {
+                "fieldName": "forestal.din_had",    
+                "longName": "Dinamica del COS (MIROC6 SSP-585 2081-2100)",
+                "layerGS": "IDEdavid:forestal.din_had",
+                "categorias": [
+                    {
+                        "nombre": "Disminuye",
+                        "color": "#de2d26"
+                    },
+                    {
+                        "nombre": "Sin cambios",
+                        "color": "#f7fcb9"
+                    },
+                    {
+                        "nombre": "Incrementa",
+                        "color": "#31a354"
+                    }                   
+                ]
+                },
+                {
+                "fieldName": "forestal.din_mir",    
+                "longName": "Dinamica del COS (MPI-ESM1-2-HR SSP-585 2081-2100)",
+                "layerGS": "IDEdavid:foresstal.din_mir",
+                "categorias": [
+                    {
+                        "nombre": "Disminuye",
+                        "color": "#de2d26"
+                    },
+                    {
+                        "nombre": "Sin cambios",
+                        "color": "#f7fcb9"
+                    },
+                    {
+                        "nombre": "Incrementa",
+                        "color": "#31a354"
+                    }                   
+                ]
+                }                                                                                 
             ]            
         }
+
+
+
     ]
 }
