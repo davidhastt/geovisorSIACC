@@ -241,5 +241,410 @@
 
 
 
+    ],
+    "Vulnerabilidad climatica":[
+        {
+            "nomGrupo": "Exposicion al clima y cambio climatico",
+            "capas":[
+                {
+                "fieldName": "climatico.E90",    
+                "longName": "Grado de Exposición al Clima y Cambio Climático (1990)",
+                "layerGS": "IDEdavid:climatico.E90",
+                "categorias": [
+                    {
+                        "nombre": "Muy alta exposición climática",
+                        "color": "#bd0026"
+                    },
+                    {
+                        "nombre": "Alta exposición climática",
+                        "color": "#f03b20"
+                    },
+                    {
+                        "nombre": "Media exposición climática",
+                        "color": "#fd8d3c"
+                    },
+                    {
+                        "nombre": "Baja exposición climática",
+                        "color": "#fecc5c"
+                    },
+                    {
+                        "nombre": "Muy baja exposición climática",
+                        "color": "#ffffb2"
+                    }
+                ]
+                },
+                {
+                "fieldName": "climatico.E00",    
+                "longName": "Grado de Exposición al Clima y Cambio Climático (2000)",
+                "layerGS": "IDEdavid:climatico.E00",
+                "categorias": [
+                    {
+                        "nombre": "Muy alta exposición climática",
+                        "color": "#bd0026"
+                    },
+                    {
+                        "nombre": "Alta exposición climática",
+                        "color": "#f03b20"
+                    },
+                    {
+                        "nombre": "Media exposición climática",
+                        "color": "#fd8d3c"
+                    },
+                    {
+                        "nombre": "Baja exposición climática",
+                        "color": "#fecc5c"
+                    },
+                    {
+                        "nombre": "Muy baja exposición climática",
+                        "color": "#ffffb2"
+                    }
+                ]
+                },
+                {
+                "fieldName": "climatico.E10",    
+                "longName": "Grado de Exposición al Clima y Cambio Climático (2010)",
+                "layerGS": "IDEdavid:climatico.E10",
+                "categorias": [
+                    {
+                        "nombre": "Muy alta exposición climática",
+                        "color": "#bd0026"
+                    },
+                    {
+                        "nombre": "Alta exposición climática",
+                        "color": "#f03b20"
+                    },
+                    {
+                        "nombre": "Media exposición climática",
+                        "color": "#fd8d3c"
+                    },
+                    {
+                        "nombre": "Baja exposición climática",
+                        "color": "#fecc5c"
+                    },
+                    {
+                        "nombre": "Muy baja exposición climática",
+                        "color": "#ffffb2"
+                    }
+                ]
+                },
+                {
+                "fieldName": "climatico.EHADG",    
+                "longName": "Grado de Exposición al Cambio Climático HADGEM A2-2100",
+                "layerGS": "IDEdavid:climatico.EHADG",
+                "categorias": [
+                    {
+                        "nombre": "Muy alta exposición climática",
+                        "color": "#bd0026"
+                    },
+                    {
+                        "nombre": "Alta exposición climática",
+                        "color": "#f03b20"
+                    },
+                    {
+                        "nombre": "Media exposición climática",
+                        "color": "#fd8d3c"
+                    },
+                    {
+                        "nombre": "Baja exposición climática",
+                        "color": "#fecc5c"
+                    },
+                    {
+                        "nombre": "Muy baja exposición climática",
+                        "color": "#ffffb2"
+                    }
+                ]
+                },
+                {
+                "fieldName": "climatico.EXPECH",    
+                "longName": "Grado de Exposición al Cambio Climático ECHAM A2-2100",
+                "layerGS": "IDEdavid:climaticoEXPECH",
+                "categorias": [
+                    {
+                        "nombre": "Muy alta exposición climática",
+                        "color": "#bd0026"
+                    },
+                    {
+                        "nombre": "Alta exposición climática",
+                        "color": "#f03b20"
+                    },
+                    {
+                        "nombre": "Media exposición climática",
+                        "color": "#fd8d3c"
+                    },
+                    {
+                        "nombre": "Baja exposición climática",
+                        "color": "#fecc5c"
+                    },
+                    {
+                        "nombre": "Muy baja exposición climática",
+                        "color": "#ffffb2"
+                    }
+                ]
+                }
+
+
+            ]            
+        },
+        {
+            "nomGrupo": "Capacidad adaptativa al clima y cambio climático",
+            "capas":[
+                {
+                "fieldName": "climatico.CA90",    
+                "longName": "Grado de Capacidad Adaptativa (1990)",
+                "layerGS": "IDEdavid:climatico.CA90",
+                "categorias": [
+                    {
+                        "nombre": "Muy alta capacidad adaptativa",
+                        "color": "#feebe2"
+                    },
+                    {
+                        "nombre": "Alta capacidad adaptativa",
+                        "color": "#fbb4b9"
+                    },
+                    {
+                        "nombre": "Media capacidad adaptativa",
+                        "color": "#f768a1"
+                    },
+                    {
+                        "nombre": "Baja capacidad adaptativa",
+                        "color": "#c51b8a"
+                    },
+                    {
+                        "nombre": "Muy baja capacidad adaptativa",
+                        "color": "#7a0177"
+                    }
+                ]
+                },
+                {
+                "fieldName": "climatico.CA00",    
+                "longName": "Grado de Capacidad Adaptativa (2000)",
+                "layerGS": "IDEdavid:climatico.CA00",
+                "categorias": [
+                    {
+                        "nombre": "Muy alta capacidad adaptativa",
+                        "color": "#feebe2"
+                    },
+                    {
+                        "nombre": "Alta capacidad adaptativa",
+                        "color": "#fbb4b9"
+                    },
+                    {
+                        "nombre": "Media capacidad adaptativa",
+                        "color": "#f768a1"
+                    },
+                    {
+                        "nombre": "Baja capacidad adaptativa",
+                        "color": "#c51b8a"
+                    },
+                    {
+                        "nombre": "Muy baja capacidad adaptativa",
+                        "color": "#7a0177"
+                    }
+                ]
+                },                
+                {
+                "fieldName": "climatico.CA10",    
+                "longName": "Grado de Capacidad Adaptativa (2010)",
+                "layerGS": "IDEdavid:climatico.CA10",
+                "categorias": [
+                    {
+                        "nombre": "Muy alta capacidad adaptativa",
+                        "color": "#feebe2"
+                    },
+                    {
+                        "nombre": "Alta capacidad adaptativa",
+                        "color": "#fbb4b9"
+                    },
+                    {
+                        "nombre": "Media capacidad adaptativa",
+                        "color": "#f768a1"
+                    },
+                    {
+                        "nombre": "Baja capacidad adaptativa",
+                        "color": "#c51b8a"
+                    },
+                    {
+                        "nombre": "Muy baja capacidad adaptativa",
+                        "color": "#7a0177"
+                    }
+                ]
+                },
+                {
+                "fieldName": "climatico.CAFUT",    
+                "longName": "Grado de capacidad adaptativa futura (2100)",
+                "layerGS": "IDEdavid:climatico.CAFUT",
+                "categorias": [
+                    {
+                        "nombre": "Muy alta capacidad adaptativa",
+                        "color": "#feebe2"
+                    },
+                    {
+                        "nombre": "Alta capacidad adaptativa",
+                        "color": "#fbb4b9"
+                    },
+                    {
+                        "nombre": "Media capacidad adaptativa",
+                        "color": "#f768a1"
+                    },
+                    {
+                        "nombre": "Baja capacidad adaptativa",
+                        "color": "#c51b8a"
+                    },
+                    {
+                        "nombre": "Muy baja capacidad adaptativa",
+                        "color": "#7a0177"
+                    }
+                ]
+                }
+
+
+            ]            
+        },
+        {
+            "nomGrupo": "Vulnerabilidad al clima y cambio climático",
+            "capas":[
+                {
+                "fieldName": "climatico.V90",    
+                "longName": "Grado de Vulnerabilidad climática (1990)",
+                "layerGS": "IDEdavid:climatico.V90",
+                "categorias": [
+                    {
+                        "nombre": "Muy alta vulnerabilidad climática",
+                        "color": "#d7191c"
+                    },
+                    {
+                        "nombre": "Alta vulnerabilidad climática",
+                        "color": "#fdae61"
+                    },
+                    {
+                        "nombre": "Media vulnerabilidad climática",
+                        "color": "#ffffbf"
+                    },
+                    {
+                        "nombre": "Baja vulnerabilidad climática",
+                        "color": "#a6d96a"
+                    },
+                    {
+                        "nombre": "Muy baja vulnerabilidad climática",
+                        "color": "#1a9641"
+                    }
+                ]
+                },
+                {
+                "fieldName": "climatico.V00",    
+                "longName": "Grado de Vulnerabilidad climática (2000)",
+                "layerGS": "IDEdavid:climatico.V00",
+                "categorias": [
+                    {
+                        "nombre": "Muy alta vulnerabilidad climática",
+                        "color": "#d7191c"
+                    },
+                    {
+                        "nombre": "Alta vulnerabilidad climática",
+                        "color": "#fdae61"
+                    },
+                    {
+                        "nombre": "Media vulnerabilidad climática",
+                        "color": "#ffffbf"
+                    },
+                    {
+                        "nombre": "Baja vulnerabilidad climática",
+                        "color": "#a6d96a"
+                    },
+                    {
+                        "nombre": "Muy baja vulnerabilidad climática",
+                        "color": "#1a9641"
+                    }
+                ]
+                },
+                {
+                "fieldName": "climatico.V10",    
+                "longName": "Grado de Vulnerabilidad climática (2010)",
+                "layerGS": "IDEdavid:climatico.V10",
+                "categorias": [
+                    {
+                        "nombre": "Muy alta vulnerabilidad climática",
+                        "color": "#d7191c"
+                    },
+                    {
+                        "nombre": "Alta vulnerabilidad climática",
+                        "color": "#fdae61"
+                    },
+                    {
+                        "nombre": "Media vulnerabilidad climática",
+                        "color": "#ffffbf"
+                    },
+                    {
+                        "nombre": "Baja vulnerabilidad climática",
+                        "color": "#a6d96a"
+                    },
+                    {
+                        "nombre": "Muy baja vulnerabilidad climática",
+                        "color": "#1a9641"
+                    }
+                ]
+                },
+                {
+                "fieldName": "climatico.VHADG",    
+                "longName": "Grado de Vulnerabilidad climática futura HADGEM A2-2100",
+                "layerGS": "IDEdavid:climatico.VHADG",
+                "categorias": [
+                    {
+                        "nombre": "Muy alta vulnerabilidad climática",
+                        "color": "#d7191c"
+                    },
+                    {
+                        "nombre": "Alta vulnerabilidad climática",
+                        "color": "#fdae61"
+                    },
+                    {
+                        "nombre": "Media vulnerabilidad climática",
+                        "color": "#ffffbf"
+                    },
+                    {
+                        "nombre": "Baja vulnerabilidad climática",
+                        "color": "#a6d96a"
+                    },
+                    {
+                        "nombre": "Muy baja vulnerabilidad climática",
+                        "color": "#1a9641"
+                    }
+                ]
+                },
+                {
+                "fieldName": "climatico.VECH",    
+                "longName": "Grado de Vulnerabilidad climática futura ECHAM A2-2100",
+                "layerGS": "IDEdavid:climatico.VECH",
+                "categorias": [
+                    {
+                        "nombre": "Muy alta vulnerabilidad climática",
+                        "color": "#d7191c"
+                    },
+                    {
+                        "nombre": "Alta vulnerabilidad climática",
+                        "color": "#fdae61"
+                    },
+                    {
+                        "nombre": "Media vulnerabilidad climática",
+                        "color": "#ffffbf"
+                    },
+                    {
+                        "nombre": "Baja vulnerabilidad climática",
+                        "color": "#a6d96a"
+                    },
+                    {
+                        "nombre": "Muy baja vulnerabilidad climática",
+                        "color": "#1a9641"
+                    }
+                ]
+                }                                 
+
+
+
+
+            ]            
+        }        
+
     ]
+
 }
